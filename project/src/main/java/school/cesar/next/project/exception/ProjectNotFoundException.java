@@ -1,4 +1,4 @@
-package project.exception;
+package school.cesar.next.project.exception;
 
 public class ProjectNotFoundException extends RuntimeException {
 	
