@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import project.exception.ProjectNotFoundException;
 
 
-
 @ControllerAdvice
 public class ProjectNotFoundAdvice {
 	
 	@ResponseBody
 	@ExceptionHandler(ProjectNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String vaccineNotFoundHandler(final ProjectNotFoundException exception) {
+    public String projectNotFoundHandler(final ProjectNotFoundException exception) {
         return exception.getMessage();
     }
 
