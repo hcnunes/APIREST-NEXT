@@ -43,8 +43,55 @@ public class Usuario {
         return this.id;
     }
     
-    public String getName() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public String getPrimeiroNome() {
         return this.primeiro_nome;
     }
+    
+    public void setPrimeiroNome(String primeiro_nome) {
+        this.primeiro_nome = primeiro_nome;
+    }
+    
+    public String getUltimoNome() {
+        return this.ultimo_nome;
+    }
+    
+    public void setUltimoNome(String ultimo_nome) {
+        this.ultimo_nome = ultimo_nome;
+    }
 	
+    public String getMatricula() {
+        return this.matricula;
+    }
+    
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+    
+    public Date getDataNascimento() {
+        return this.data_nascimento;
+    }
+    
+    public void setDataNascimento(Date data_nascimento) {
+        this.data_nascimento = data_nascimento;
+    }
+    
+    public String getAtivo() {
+        return this.ativo;
+    }
+    
+    public void setAtivo(String ativo) {
+        this.ativo = ativo;
+    }
+    
+    public String getCentroCusto() {
+        return this.centro_custo;
+    }
+    
+    public void setCentroCusto(String centro_custo) {
+        this.centro_custo = centro_custo;
+    }
 }
