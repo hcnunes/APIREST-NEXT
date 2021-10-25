@@ -11,36 +11,37 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table (schema = "next_rest_api_schema", name = "projeto", uniqueConstraints = {@UniqueConstraint (name = "uk_nome_projeto", columnNames = { "nome_projeto" }) })
+@Table(schema = "next_rest_api_schema", name = "projeto", uniqueConstraints = {
+		@UniqueConstraint(name = "uk_nome_projeto", columnNames = { "nome_projeto" }) })
 
 public class Projeto {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_projeto", nullable = false, updatable = false)
-    private Long idProjeto;
-	
+	private Long idProjeto;
+
 	@Column(name = "nome_projeto", nullable = false, length = 100)
-    private String nomeProjeto;
-	
+	private String nomeProjeto;
+
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "gerente_projeto", nullable = false)
-    private Long gerenteProjeto;
-	
+	private Long gerenteProjeto;
+
 	@Column(name = "centro_custo_projeto", nullable = false, length = 100)
-    private String centroCustoProjeto;
-	
+	private String centroCustoProjeto;
+
 	@Column(name = "data_inicio_projeto", nullable = false)
-    private Date dataInicioProjeto;
-	
+	private Date dataInicioProjeto;
+
 	@Column(name = "data_termino_projeto", nullable = false)
-    private Date dataTerminoProjeto;
-	
+	private Date dataTerminoProjeto;
+
 	@Column(name = "status_projeto", nullable = false, length = 100)
-    private String statusProjeto;
-	
+	private String statusProjeto;
+
 	@Column(name = "flag_projeto", nullable = false, length = 100)
-    private String flagProjeto;
+	private String flagProjeto;
 
 	public Long getIdProjeto() {
 		return idProjeto;
@@ -106,6 +107,4 @@ public class Projeto {
 		this.flagProjeto = flagProjeto;
 	}
 
-	
-	
 }
