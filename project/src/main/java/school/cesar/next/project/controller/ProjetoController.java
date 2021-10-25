@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,34 +19,40 @@ import school.cesar.next.project.entity.Projeto;
 import school.cesar.next.project.service.ProjetoService;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/projetos")
 public class ProjetoController {
 
 	@Autowired
 	private ProjetoService projetoService;
 
-	@GetMapping("/projetos")
+	@GetMapping("")
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody List<Projeto> list() {
 		return this.projetoService.list();
 	}
 
-	@GetMapping("/projetos/{id_projeto}")
+	@GetMapping("/{id_projeto}")
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody Projeto get(@PathVariable(value = "id_projeto") final Long id_projeto) {
 		return this.projetoService.get(id_projeto);
 	}
 
-	@PutMapping("/projetos/{id_projeto}")
+	@PutMapping("/{id_projeto}")
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody Projeto update(@PathVariable(value = "id_projeto") final Long id_projeto,
 			@RequestBody Projeto projeto) {
 		return this.projetoService.update(id_projeto, projeto);
 	}
 
-	@PostMapping("/novo/projeto")
+	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
 	public @ResponseBody Projeto save(@RequestBody Projeto projeto) {
 		return this.projetoService.save(projeto);
+	}
+
+	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public void delete(@PathVariable(value = "id") final Long id) {
+		this.projetoService.delete(id);
 	}
 }

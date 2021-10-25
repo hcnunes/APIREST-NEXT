@@ -44,4 +44,10 @@ public class UsuarioService {
 	public Usuario save(final Usuario usuario) {
 		return this.usuarioRepository.save(usuario);
 	}
+
+	@Transactional
+	public void delete(final Long id) {
+		this.usuarioRepository
+				.delete(this.usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNotFoundExecption(id)));
+	}
 }

@@ -1,4 +1,4 @@
-package school.cesar.next.project.advice;
+package school.cesar.next.project.controller.advice;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -6,15 +6,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import school.cesar.next.project.exception.ProjetoNotFoundException;
+import school.cesar.next.project.exception.CargoNotFoundException;
 
 @ControllerAdvice
-public class ProjetoNotFoundAdvice {
-
+public class CargoNotFoundAdvice {
+	
 	@ResponseBody
-	@ExceptionHandler(ProjetoNotFoundException.class)
+	@ExceptionHandler(CargoNotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public String projectNotFoundHandler(final ProjetoNotFoundException exception) {
+	public String cargotNotFoundHandler(final CargoNotFoundException exception) {
 		return exception.getMessage();
 	}
 

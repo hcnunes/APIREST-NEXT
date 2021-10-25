@@ -15,44 +15,44 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import school.cesar.next.project.entity.Usuario;
-import school.cesar.next.project.service.UsuarioService;
+import school.cesar.next.project.entity.Cargo;
+import school.cesar.next.project.service.CargoService;
 
 @RestController
-@RequestMapping("/usuarios")
-public class UsuarioController {
-
+@RequestMapping("/cargo")
+public class CargoController {
+	
 	@Autowired
-	private UsuarioService usuarioService;
-
+	private CargoService cargoService;
+	
 	@GetMapping("/")
 	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody List<Usuario> list() {
-		return this.usuarioService.list();
+	public @ResponseBody List<Cargo> list() {
+		return this.cargoService.list();
 	}
-
+	
 	@GetMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody Usuario get(@PathVariable(value = "id") final Long id) {
-		return this.usuarioService.get(id);
+	public @ResponseBody Cargo get(@PathVariable(value = "id") final Long id) {
+		return this.cargoService.get(id);
 	}
 
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody Usuario update(@PathVariable(value = "id") final Long id, @RequestBody Usuario usuario) {
-		return this.usuarioService.update(id, usuario);
+	public @ResponseBody Cargo update(@PathVariable(value = "id") final Long id, @RequestBody Cargo cargo) {
+		return this.cargoService.update(id, cargo);
 	}
 
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
-	public @ResponseBody Usuario save(@RequestBody Usuario usuario) {
-		return this.usuarioService.save(usuario);
+	public @ResponseBody Cargo save(@RequestBody Cargo cargo) {
+		return this.cargoService.save(cargo);
 	}
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public void delete(@PathVariable(value = "id") final Long id) {
-		this.usuarioService.delete(id);
+		this.cargoService.delete(id);
 	}
 
 }

@@ -1,4 +1,4 @@
-package school.cesar.next.project.advice;
+package school.cesar.next.project.controller.advice;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -6,15 +6,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import school.cesar.next.project.exception.UsuarioNotFoundExecption;
+import school.cesar.next.project.exception.ProjetoNotFoundException;
 
 @ControllerAdvice
-public class UsuarioNotFoundAdvice {
+public class ProjetoNotFoundAdvice {
 
 	@ResponseBody
-	@ExceptionHandler(UsuarioNotFoundExecption.class)
+	@ExceptionHandler(ProjetoNotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public String usuariotNotFoundHandler(final UsuarioNotFoundExecption exception) {
+	public String projectNotFoundHandler(final ProjetoNotFoundException exception) {
 		return exception.getMessage();
 	}
 

@@ -44,4 +44,10 @@ public class ProjetoService {
 		return this.projetoRepository.save(projeto);
 	}
 
+	@Transactional
+	public void delete(final Long id) {
+		this.projetoRepository
+				.delete(this.projetoRepository.findById(id).orElseThrow(() -> new ProjetoNotFoundException(id)));
+	}
+
 }
