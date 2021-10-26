@@ -25,7 +25,7 @@ public class ProjetoService {
 	public Projeto get(final Long id_projeto) {
 		return this.projetoRepository.findById(id_projeto).orElseThrow(() -> new ProjetoNotFoundException(id_projeto));
 	}
-
+	
 	@Transactional
 	public Projeto update(final Long id_projeto, final Projeto newProjeto) {
 		return this.projetoRepository.findById(id_projeto).map(projeto -> {

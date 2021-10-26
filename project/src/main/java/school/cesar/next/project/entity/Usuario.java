@@ -38,6 +38,17 @@ public class Usuario {
 
 	@Column(name = "centro_custo", nullable = false, length = 50)
 	private String centroCusto;
+	
+	@Column(name = "id_cargo", nullable = false)
+	private Long idCargo;
+
+	public Long getIdCargo() {
+		return idCargo;
+	}
+
+	public void setIdCargo(Long idCargo) {
+		this.idCargo = idCargo;
+	}
 
 	public Long getId() {
 		return id;
