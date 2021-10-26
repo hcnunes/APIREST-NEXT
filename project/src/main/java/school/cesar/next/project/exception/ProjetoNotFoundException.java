@@ -7,7 +7,7 @@ public class ProjetoNotFoundException extends RuntimeException {
 	}
 
 	public ProjetoNotFoundException(String nome_projeto) {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 }

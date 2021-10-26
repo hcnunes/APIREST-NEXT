@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,32 +26,32 @@ public class ProjetoController {
 	@Autowired
 	private ProjetoService projetoService;
 
-	@GetMapping("")
+	@GetMapping({ "", "/" })
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody List<Projeto> list() {
 		return this.projetoService.list();
 	}
 
-	@GetMapping("/{id_projeto}")
+	@GetMapping({ "/{id_projeto}", "/{id_projeto}/" })
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody Projeto get(@PathVariable(value = "id_projeto") final Long id_projeto) {
 		return this.projetoService.get(id_projeto);
 	}
-
-	@PutMapping("/{id_projeto}")
+	
+	@PutMapping({ "/{id_projeto}", "/{id_projeto}/" })
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody Projeto update(@PathVariable(value = "id_projeto") final Long id_projeto,
-			@RequestBody Projeto projeto) {
+			@Validated @RequestBody Projeto projeto) {
 		return this.projetoService.update(id_projeto, projeto);
 	}
 
-	@PostMapping("/")
+	@PostMapping({ "", "/" })
 	@ResponseStatus(HttpStatus.CREATED)
 	public @ResponseBody Projeto save(@RequestBody Projeto projeto) {
 		return this.projetoService.save(projeto);
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping({ "/{id_projeto}", "/{id_projeto}/" })
 	@ResponseStatus(HttpStatus.OK)
 	public void delete(@PathVariable(value = "id") final Long id) {
 		this.projetoService.delete(id);

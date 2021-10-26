@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,31 +26,31 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 
-	@GetMapping("/")
+	@GetMapping({ "", "/" })
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody List<Usuario> list() {
 		return this.usuarioService.list();
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping({ "/{id}", "/{id}/" })
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody Usuario get(@PathVariable(value = "id") final Long id) {
 		return this.usuarioService.get(id);
 	}
 
-	@PutMapping("/{id}")
+	@PutMapping({ "/{id}", "/{id}/" })
 	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody Usuario update(@PathVariable(value = "id") final Long id, @RequestBody Usuario usuario) {
+	public @ResponseBody Usuario update(@PathVariable(value = "id") final Long id, @Validated @RequestBody Usuario usuario) {
 		return this.usuarioService.update(id, usuario);
 	}
 
-	@PostMapping("/")
+	@PostMapping({ "", "/" })
 	@ResponseStatus(HttpStatus.CREATED)
 	public @ResponseBody Usuario save(@RequestBody Usuario usuario) {
 		return this.usuarioService.save(usuario);
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping({ "/{id}", "/{id}/" })
 	@ResponseStatus(HttpStatus.OK)
 	public void delete(@PathVariable(value = "id") final Long id) {
 		this.usuarioService.delete(id);
