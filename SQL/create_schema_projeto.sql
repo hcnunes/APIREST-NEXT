@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS next_rest_api_schema.projeto (
-	id_projeto INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	id_projeto CHAR(36),
     nome_projeto VARCHAR(100) NOT NULL,
     gerente_projeto INT UNSIGNED NOT NULL,
     centro_custo_projeto VARCHAR(100) NOT NULL,
