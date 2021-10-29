@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(schema = "next_rest_api_schema", name = "usuario", uniqueConstraints = {
@@ -21,24 +22,31 @@ public class Usuario {
 	@Column(name = "id", nullable = false, updatable = false)
 	private Long id;
 
+	@NotEmpty
 	@Column(name = "primeiro_nome", nullable = false, length = 100)
 	private String primeiroNome;
 
+	@NotEmpty
 	@Column(name = "ultimo_nome", nullable = false, length = 100)
 	private String ultimoNome;
 
+	@NotEmpty
 	@Column(name = "matricula", nullable = false, length = 4)
-	private String matricula;
+	private Long matricula;
 
+	@NotEmpty
 	@Column(name = "data_nascimento", nullable = false)
 	private Date dataNascimento;
 
+	@NotEmpty
 	@Column(name = "ativo", nullable = false, length = 10)
 	private String ativo;
 
+	@NotEmpty
 	@Column(name = "centro_custo", nullable = false, length = 50)
 	private String centroCusto;
 	
+	@NotEmpty
 	@Column(name = "id_cargo", nullable = false)
 	private Long idCargo;
 
@@ -74,11 +82,11 @@ public class Usuario {
 		this.ultimoNome = ultimoNome;
 	}
 
-	public String getMatricula() {
+	public Long getMatricula() {
 		return matricula;
 	}
 
-	public void setMatricula(String matricula) {
+	public void setMatricula(Long matricula) {
 		this.matricula = matricula;
 	}
 

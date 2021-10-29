@@ -22,12 +22,12 @@ public class UsuarioService {
 	}
 
 	@Transactional
-	public Usuario get(final Long id) {
+	public Usuario get(final Long id) throws UsuarioNotFoundExecption {
 		return this.usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNotFoundExecption(id));
 	}
 
 	@Transactional
-	public Usuario update(final Long id, final Usuario newUsuario) {
+	public Usuario update(final Long id, final Usuario newUsuario) throws UsuarioNotFoundExecption {
 		return this.usuarioRepository.findById(id).map(usuario -> {
 			usuario.setPrimeiroNome(newUsuario.getPrimeiroNome());
 			usuario.setUltimoNome(newUsuario.getUltimoNome());
@@ -35,10 +35,40 @@ public class UsuarioService {
 			usuario.setDataNascimento(newUsuario.getDataNascimento());
 			usuario.setAtivo(newUsuario.getAtivo());
 			usuario.setCentroCusto(newUsuario.getCentroCusto());
+			usuario.setIdCargo(newUsuario.getIdCargo());
 			return this.usuarioRepository.save(usuario);
 		}).orElseThrow(() -> new UsuarioNotFoundExecption(id));
 
 	}
+
+	@Transactional
+	public Usuario updatePartially(final Long id, final Usuario newUsuario) throws UsuarioNotFoundExecption {
+		return this.usuarioRepository.findById(id).map(usuario -> {
+			if (newUsuario.getPrimeiroNome()!=null && !newUsuario.getPrimeiroNome().trim().isEmpty()) {
+				usuario.setPrimeiroNome(newUsuario.getPrimeiroNome());
+			}
+			
+			if (newUsuario.getUltimoNome()!=null && !newUsuario.getUltimoNome().trim().isEmpty()){
+				usuario.setUltimoNome(newUsuario.getUltimoNome());
+			}
+			
+			if (newUsuario.getMatricula()!=null && !newUsuario.getMatricula().trim().isEmpty()){
+				usuario.setMatricula(newUsuario.getMatricula());
+			}
+			
+			if (newUsuario.getDataNascimento()!=null && !newUsuario.getDataNascimento().trim().isEmpty()) {
+				usuario.setDataNascimento(newUsuario.getDataNascimento());
+			}
+			
+			if (newUsuario.getAtivo()!=null && !newUsuario.getAtivo().trim().isEmpty()) {
+				usuario.setAtivo(newUsuario.getAtivo());
+			}
+			
+			if (newUsuario.getCentroCusto()!=null && !newUsuario.getCentroCusto().trim().isEmpty()) {
+				usuario.setCentroCusto(newUsuario.getCentroCusto());
+			}
+			
+		}
 
 	@Transactional
 	public Usuario save(final Usuario usuario) {
@@ -46,7 +76,7 @@ public class UsuarioService {
 	}
 
 	@Transactional
-	public void delete(final Long id) {
+	public void delete(final Long id) throws UsuarioNotFoundExecption {
 		this.usuarioRepository
 				.delete(this.usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNotFoundExecption(id)));
 	}

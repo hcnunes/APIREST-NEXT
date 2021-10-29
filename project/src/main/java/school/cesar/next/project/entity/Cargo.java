@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(schema = "next_rest_api_schema", name = "cargo", uniqueConstraints = {
@@ -18,6 +19,10 @@ public class Cargo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false, updatable = false)
 	private Long id;
+	
+	@NotEmpty
+	@Column(name = "nome", nullable = false, length = 100)
+	private String nome;
 	
 	public Long getId() {
 		return id;
@@ -35,7 +40,6 @@ public class Cargo {
 		this.nome = nome;
 	}
 
-	@Column(name = "nome", nullable = false, length = 100)
-	private String nome;
+	
 
 }

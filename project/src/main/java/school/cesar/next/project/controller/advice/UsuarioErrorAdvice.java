@@ -6,15 +6,22 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import school.cesar.next.project.exception.UsuarioEmptyNameExecption;
 import school.cesar.next.project.exception.UsuarioNotFoundExecption;
 
 @ControllerAdvice
-public class UsuarioNotFoundAdvice {
+public class UsuarioErrorAdvice {
 
 	@ResponseBody
 	@ExceptionHandler(UsuarioNotFoundExecption.class)
-	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public String usuariotNotFoundHandler(final UsuarioNotFoundExecption exception) {
+		return exception.getMessage();
+	}
+
+	@ResponseBody
+	@ExceptionHandler(UsuarioEmptyNameExecption.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public String usuarioEmptyNameHandler(final UsuarioEmptyNameExecption exception) {
 		return exception.getMessage();
 	}
 

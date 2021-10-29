@@ -23,12 +23,12 @@ public class CargoService {
 	}
 
 	@Transactional
-	public Cargo get(final Long id) {
+	public Cargo get(final Long id) throws CargoNotFoundException {
 		return this.cargoRepository.findById(id).orElseThrow(() -> new CargoNotFoundException(id));
 	}
 
 	@Transactional
-	public Cargo update(final Long id, final Cargo newCargo) {
+	public Cargo update(final Long id, final Cargo newCargo) throws UsuarioNotFoundExecption {
 		return this.cargoRepository.findById(id).map(cargo -> {
 			cargo.setNome(newCargo.getNome());
 			return this.cargoRepository.save(cargo);
@@ -41,7 +41,7 @@ public class CargoService {
 	}
 
 	@Transactional
-	public void delete(final Long id) {
+	public void delete(final Long id) throws CargoNotFoundException {
 		this.cargoRepository
 				.delete(this.cargoRepository.findById(id).orElseThrow(() -> new CargoNotFoundException(id)));
 	}

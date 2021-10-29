@@ -22,12 +22,12 @@ public class ProjetoService {
 	}
 
 	@Transactional
-	public Projeto get(final Long id_projeto) {
+	public Projeto get(final Long id_projeto) throws ProjetoNotFoundException {
 		return this.projetoRepository.findById(id_projeto).orElseThrow(() -> new ProjetoNotFoundException(id_projeto));
 	}
-	
+
 	@Transactional
-	public Projeto update(final Long id_projeto, final Projeto newProjeto) {
+	public Projeto update(final Long id_projeto, final Projeto newProjeto) throws ProjetoNotFoundException {
 		return this.projetoRepository.findById(id_projeto).map(projeto -> {
 			projeto.setNomeProjeto(newProjeto.getNomeProjeto());
 			projeto.setCentroCustoProjeto(newProjeto.getCentroCustoProjeto());
@@ -45,7 +45,7 @@ public class ProjetoService {
 	}
 
 	@Transactional
-	public void delete(final Long id) {
+	public void delete(final Long id) throws ProjetoNotFoundException {
 		this.projetoRepository
 				.delete(this.projetoRepository.findById(id).orElseThrow(() -> new ProjetoNotFoundException(id)));
 	}

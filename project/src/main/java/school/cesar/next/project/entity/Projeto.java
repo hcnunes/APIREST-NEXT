@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(schema = "next_rest_api_schema", name = "projeto", uniqueConstraints = {
@@ -21,25 +22,32 @@ public class Projeto {
 	@Column(name = "id_projeto", nullable = false, updatable = false)
 	private Long idProjeto;
 
+	@NotEmpty
 	@Column(name = "nome_projeto", nullable = false, length = 100)
 	private String nomeProjeto;
 
+	@NotEmpty
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "gerente_projeto", nullable = false)
 	private Long gerenteProjeto;
 
+	@NotEmpty
 	@Column(name = "centro_custo_projeto", nullable = false, length = 100)
 	private String centroCustoProjeto;
 
+	@NotEmpty
 	@Column(name = "data_inicio_projeto", nullable = false)
 	private Date dataInicioProjeto;
 
+	@NotEmpty
 	@Column(name = "data_termino_projeto", nullable = false)
 	private Date dataTerminoProjeto;
 
+	@NotEmpty
 	@Column(name = "status_projeto", nullable = false, length = 100)
 	private String statusProjeto;
 
+	@NotEmpty
 	@Column(name = "flag_projeto", nullable = false, length = 100)
 	private String flagProjeto;
 
