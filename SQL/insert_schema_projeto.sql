@@ -1,0 +1,1 @@
+INSERT INTO next_rest_api_schema.projeto(nome_projeto, gerente_projeto, centro_custo_projeto, data_inicio_projeto, data_termino_projeto, status_projeto, flag_projeto) VALUES ('Primeiro', (SELECT id FROM next_rest_api_schema.usuario WHERE primeiro_nome = 'Bruno'), 'ADM/FINANCEIRO', '2021-01-01', '2022-02-02', 'Iniciado', 'Vermelho');

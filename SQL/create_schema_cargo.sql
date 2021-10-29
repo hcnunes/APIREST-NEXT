@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS next_rest_api_schema.cargo (
+id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+nome VARCHAR(100) NOT NULL,
+CONSTRAINT pk_cargo PRIMARY KEY (id),
+CONSTRAINT uk_cargo UNIQUE KEY (nome)
+);
+
